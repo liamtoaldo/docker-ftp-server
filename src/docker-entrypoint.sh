@@ -14,8 +14,8 @@ adduser \
 	$FTP_USER
 
 mkdir -p /home/$FTP_USER
-chown root:root /home/$FTP_USER/files
-chmod 755 /home/$FTP_USER/files
+chown root:root /home/$FTP_USER/$MAIN_DIR
+chmod 755 /home/$FTP_USER/$MAIN_DIR
 echo "$FTP_USER:$FTP_PASS" | /usr/sbin/chpasswd
 
 touch /var/log/vsftpd.log

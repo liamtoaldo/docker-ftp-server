@@ -4,7 +4,8 @@ A simple FTP server, using
 [`vsftpd`](https://security.appspot.com/vsftpd.html).
 
 ## Fork's difference
-**I (https://github.com/liamtoaldo)** forked the original repository to automatically create a main directory inside the ftp volume and to prevent the ftp user to delete any directory inside the main directory. For security purposes.
+**I (https://github.com/liamtoaldo)** forked the original repository to automatically create a main directory inside the ftp volume and to prevent the ftp user to delete any directory inside the main directory, while still being able to delete all its subdirs and files.
+For security purposes.
 
 The main directory can be specified inside the environment with
 `MAIN_DIR`. See the examples below.
