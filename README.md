@@ -22,7 +22,9 @@ docker run \
 	--detach \
 	--env FTP_PASS=123 \
 	--env FTP_USER=user \
-        --env MAIN_DIR=files \
+    --env MAIN_DIR=files \
+    --env PASV_MIN_PORT=40000 \
+    --env PASV_MAX_PORT=40009 \
 	--name my-ftp-server \
 	--publish 20-21:20-21/tcp \
 	--publish 40000-40009:40000-40009/tcp \
@@ -40,6 +42,8 @@ services:
       - FTP_PASS=123
       - FTP_USER=user
       - MAIN_DIR=files
+      - PASV_MIN_PORT=40000
+      - PASV_MAX_PORT=40009
     image: liam244/ftp-server
     ports:
       - '20-21:20-21/tcp'

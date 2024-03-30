@@ -1,4 +1,7 @@
 #!/bin/sh
+# Add the passive ports configuration dynamically
+echo "pasv_max_port=${PASV_MAX_PORT}" >> /etc/vsftpd.conf
+echo "pasv_min_port=${PASV_MIN_PORT}" >> /etc/vsftpd.conf
 
 addgroup \
 	-g $GID \
@@ -14,8 +17,11 @@ adduser \
 	$FTP_USER
 
 mkdir -p /home/$FTP_USER
-chown root:root /home/$FTP_USER/$MAIN_DIR
-chmod 755 /home/$FTP_USER/$MAIN_DIR
+mkdir -p /home/$FTP_USER/$MAIN_DIR
+chown -R $FTP_USER:$FTP_USER /home/$FTP_USER/$MAIN_DIR
+chown root:root /home/$FTP_USER
+chmod 755 /home/$FTP_USER
+
 echo "$FTP_USER:$FTP_PASS" | /usr/sbin/chpasswd
 
 touch /var/log/vsftpd.log
